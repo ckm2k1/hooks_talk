@@ -6,18 +6,12 @@ export default function Messages() {
   let [messages, setMessages] = useState([]);
 
   useEffect(() => {
-    function refreshMessages() {
-      msgApi.getMessages(data => {
-        setMessages(data);
-        setTimeout(refreshMessages, 2000);
-      });
-    }
-
-    refreshMessages();
+    msgApi.getMessages(data => {
+      setMessages(data);
+    });
 
     return () => {
       console.log('Running Messages useEffect cleanup hook.');
-      // clearInterval(interval);
     };
   });
 
