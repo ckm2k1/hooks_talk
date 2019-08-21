@@ -8,16 +8,18 @@ export default function Messages() {
   useEffect(() => {
     function refreshMessages() {
       msgApi.getMessages(data => {
-          setMessages(data);
+        setMessages(data);
+        setTimeout(refreshMessages, 2000);
       });
     }
 
-    const interval = setInterval(refreshMessages, 1000);
+    refreshMessages();
+
     return () => {
-      console.log('Running Messages useEffect cleanup hook.')
-      clearInterval(interval);
+      console.log('Running Messages useEffect cleanup hook.');
+      // clearInterval(interval);
     };
-  }, []);
+  });
 
   let children = [];
   for (let msg of messages) {

@@ -5,7 +5,7 @@ const messages = [];
 export function getMessages(cb) {
   setTimeout(() => {
     cb(messages);
-  }, 500);
+  }, 0);
 }
 
 export function addMessage(user, msg, cb = () => {}) {
