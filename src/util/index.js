@@ -11,7 +11,3 @@ const mgen = monotonicGenerator();
 export function monotonic() {
   return mgen.next().value;
 }
-
-export function genMessage() {
-  return faker.hacker.phrase();
-}

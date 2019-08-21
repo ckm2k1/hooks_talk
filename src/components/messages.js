@@ -2,20 +2,22 @@ import React, { useState, useEffect } from 'react';
 import * as util from '../util';
 import * as msgApi from '../message-api';
 
-let messageLoadingInt;
-
-export default function Messages({ initialMessages = [] }) {
-  let [messages, setMessages] = useState(initialMessages);
+export default function Messages() {
+  let [messages, setMessages] = useState([]);
 
   useEffect(() => {
-    msgApi.getMessages(data => {
-      setMessages(data);
-    });
+    function refreshMessages() {
+      msgApi.getMessages(data => {
+          setMessages(data);
+      });
+    }
 
+    const interval = setInterval(refreshMessages, 1000);
     return () => {
-      clearInterval(messageLoadingInt);
+      console.log('Running Messages useEffect cleanup hook.')
+      clearInterval(interval);
     };
-  });
+  }, []);
 
   let children = [];
   for (let msg of messages) {
