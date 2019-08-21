@@ -1,0 +1,22 @@
+{
+  "folders": [{
+    "path": ".",
+    "folder_exclude_patterns": [
+      "node_modules"
+    ],
+    "file_exclude_patterns": []
+  }],
+  "settings": {
+    "tab_size": 2,
+    "translate_tabs_to_spaces": true,
+    "use_tab_stops": false,
+    "SublimeLinter.linters.flow.disable": true,
+    "SublimeLinter.linters.eslint.disable": false,
+    "SublimeLinter.linters.eslint.executable": "${folder}/node_modules/.bin/eslint",
+    "js_prettier": {
+      "additional_cli_args": {
+        "--config": "${project_path}/.prettierrc"
+      }
+    }
+  }
+}
